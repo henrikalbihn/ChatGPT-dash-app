@@ -2,24 +2,14 @@
 Adapted from https://github.com/minimaxir/simpleaichat/blob/main/simpleaichat/utils.py
 """
 import json
-
-# import pandas as pd
-# import multiprocessing as mp
 import os
 
 import httpx
-
-# import numpy as np
 import tiktoken
 from loguru import logger
 from pydantic import Field
 
 from src.config import OPENAI_API_KEY
-
-# import traceback
-
-
-# , SUPABASE_KEY, SUPABASE_URL
 
 WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php"
 
@@ -55,137 +45,6 @@ async def get_embedding(
         response.raise_for_status()
         embedding = response.json()["data"][0]["embedding"]
         return embedding
-
-
-# async def match_query(
-#     input: str,
-#     match_count: int = 10,
-# ) -> list[dict[str, any]]:
-#     """Matches a query to documents in the database. Performs \
-#         cosine similarity semantic search over the embeddings of \
-#             the query and the documents.
-
-#     Args:
-#         input (str): The query to match.
-#         match_count (int, optional): The number of matches to return. \
-#             Defaults to 10.
-
-#     Returns:
-#         list[dict[str, any]]: The response from the database.
-#     """
-#     query_embedding = await get_embedding(input=input)
-#     matches = await match_documents(
-#         query_embedding=query_embedding,
-#         match_count=match_count,
-#     )
-#     logger.info(f"Returned [{len(matches)}] matches...")
-#     return matches
-
-
-# async def tool_match_query(
-#     input: str,
-#     match_count: int = 10,
-# ) -> dict[list[dict[str, any]]]:
-#     """Matches a query to documents in the database. \
-#         Performs cosine similarity semantic search over the \
-#             embeddings of the query and the documents. \
-#                 Useful to search your internal knowledge base.
-
-#     Args:
-#         input (str): The query to match.
-#         match_count (int, optional): The number of matches to return. \
-#             Defaults to 10.
-
-#     Returns:
-#         dict[list[dict[str, any]]]: The response from the database.
-#     """
-#     results = await match_query(input, match_count)
-
-#     # only return the content and metadata.url fields
-#     results = [
-#         {
-#             "content": result["content"],
-#             "url": result["metadata"].get("url", None),
-#         }
-#         for result in results
-#     ]
-#     return {
-#         "context": json.dumps(results),
-#     }
-
-
-# def str_2_vec(x: dict[str, any]) -> dict[str, any]:
-#     """Converts the embedding from a string to a list of floats."""
-
-#     logger.debug(
-#         f"[{os.getpid()}] Match! Doc id: [{x['id']}] \
-#                  Similarity: [{x['similarity']:0.4f}]"
-#     )
-
-#     try:
-#         # embedding is returned from Supabase RPC as a string
-#         x["embedding"] = np.fromstring(
-#             x["embedding"].strip("[]"),
-#             np.float32,
-#             sep=",",
-#         ).tolist()
-
-#         return x
-#     except Exception as e:
-#         logger.error(f"Error processing item: {e}")
-#         logger.error(traceback.format_exc())
-#         return None  # or some other way to indicate failure
-
-
-# async def match_documents(
-#     query_embedding: list[float],
-#     match_count: int = 10,
-# ) -> list[dict[str, any]]:
-#     """Matches documents in the database to a query embedding.
-
-#     Args:
-#         query_embedding (list[float]): The embedding of the query.
-#         match_count (int, optional): The number of matches to return. \
-#             Defaults to 10.
-#     Returns:
-#         List[float]: A list of match scores.
-#     """
-#     logger.info(f"Matching [{match_count}] documents...")
-#     data = {
-#         "match_count": match_count,
-#         "query_embedding": query_embedding,
-#     }
-
-#     headers = {
-#         "Authorization": f"Bearer {SUPABASE_KEY}",
-#         "apiKey": SUPABASE_KEY,
-#     }
-#     response = httpx.post(
-#         f"{SUPABASE_URL}/rest/v1/rpc/match_documents",
-#         json=data,
-#         headers=headers,
-#     )
-
-#     logger.debug(f"[{os.getpid()}] RPC response: [{response.status_code}]")
-#     response_json = response.json()
-#     logger.info(f"# results: {len(response_json)}")
-
-#     # converting to a pandas dataframe first is a workaround
-#     # and honestly not ideal, would be good to consider other options
-
-#     # df = pd.DataFrame(response_json)
-#     # df["embedding"] = df["embedding"].apply(
-#     #     lambda x: np.fromstring(x.strip("[]"), np.float32, sep=",").tolist()
-#     # )
-#     # return df.to_dict(orient="records")
-
-#     num_workers = mp.cpu_count()
-#     logger.debug(f"Workers:processes [{num_workers}:{len(response_json)}]")
-
-#     with mp.Pool(num_workers) as pool:
-#         response_json = pool.map(str_2_vec, response_json)
-
-#     return response_json
 
 
 def wikipedia_search(query: str, n: int = 1) -> str | list[str]:

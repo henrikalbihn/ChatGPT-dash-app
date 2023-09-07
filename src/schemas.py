@@ -161,12 +161,12 @@ class ChatInputSchema(BaseModel):
     session_id: str = Field(
         title="Chat session id",
         description="Chat session id",
-        default="7337dfef-0ab0-404f-be29-1717944739c5",
+        default="ac89f5b9-5b0b-40c1-a094-035411afa0cf",
     )
     user_id: UUID = Field(
         title="User id",
         description="User id",
-        default="536f3e27-48a8-4ed9-9b2e-7711b74d532d",
+        default="7e7be659-ddbe-4b6d-9005-d7551ab4695d",
     )
     query: str = Field(
         title="Query",

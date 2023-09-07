@@ -96,7 +96,7 @@ class AIChat(BaseModel):
         )
 
         if not system and console:
-            character = "Atom" if not character else character
+            character = "ChatGPT" if not character else character
             new_default_session.title = character
             self.interactive_console(character=character, prime=prime)
 
