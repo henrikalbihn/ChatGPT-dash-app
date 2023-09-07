@@ -7,7 +7,7 @@ packages = []
 
 [tool.poetry.dependencies]
 python = "^3.11.4"
-dash = "^2.13.0"
+dash = { extras = ["testing"], version = "^2.13.0" }
 dash-bootstrap-components = "^1.4.2"
 python-dotenv = "^1.0.0"
 httpx = "^0.24.1"
@@ -22,6 +22,8 @@ loguru = "^0.7.1"
 black = "^23.7.0"
 isort = "^5.12.0"
 ruff = "^0.0.287"
+pytest-asyncio = "^0.21.1"
+pytest-cov = "^4.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -32,16 +34,16 @@ line-length = 120
 
 select = ["E", "F", "UP", "N", "C", "B"]
 
-# Assume Python 3.10.
+# Assume Python 3.11
 target-version = "py311"
 
 [tool.ruff.flake8-quotes]
 docstring-quotes = "double"
 
-[tool.pytest.ini_options]
-addopts = "-v --doctest-modules --doctest-glob=*.md"
-asyncio_mode = "strict"
-env_files = [".env"]
+# [tool.pytest.ini_options]
+# addopts = "-v --doctest-modules --doctest-glob=*.md"
+# asyncio_mode = "strict"
+# env_files = [".env"]
 
 [tool.black]
 line-length = 120

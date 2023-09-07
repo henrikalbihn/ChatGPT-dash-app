@@ -8,8 +8,8 @@ import dash_bootstrap_components as dbc
 from dash import Dash, Input, Output, State, callback_context, dcc, html
 from loguru import logger
 
-from src.config import OUTPUT_STYLES, PROMPTS
-from src.simple import AsyncAIChat
+from app.src.config import OUTPUT_STYLES, PROMPTS
+from app.src.simple import AsyncAIChat
 
 AI: AsyncAIChat = None
 INIT_SESSION_ID = f"chatgpt-default-{uuid4().hex[:8]}"
@@ -98,7 +98,12 @@ def text_areas() -> html.Div:
 
 
 # instantiate dash
-app = Dash(__name__, external_stylesheets=[dbc.themes.SOLAR])  # create layout
+app = Dash(
+    __name__,
+    external_stylesheets=[dbc.themes.SOLAR],
+    server=True,
+    title="ChatGPT Writing Assitant 🧠",
+)  # create layout
 
 app.layout = html.Div(
     [

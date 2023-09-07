@@ -18,10 +18,10 @@ from loguru import logger
 from pydantic import BaseModel, ConfigDict
 from rich.console import Console
 
-from src.chatgpt import ChatGPTSession
-from src.config import OPENAI_API_KEY
-from src.schemas import ChatSession
-from src.utils import wikipedia_search_lookup
+from app.src.chatgpt import ChatGPTSession
+from app.src.config import OPENAI_API_KEY
+from app.src.schemas import ChatSession
+from app.src.utils import wikipedia_search_lookup
 
 
 class AIChat(BaseModel):

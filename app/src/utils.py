@@ -9,7 +9,7 @@ import tiktoken
 from loguru import logger
 from pydantic import Field
 
-from src.config import OPENAI_API_KEY
+from app.src.config import OPENAI_API_KEY
 
 WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php"
 

@@ -11,9 +11,9 @@ from orjson import JSONDecodeError as OJDecodeError
 from orjson import loads as ojloads
 from pydantic import ConfigDict, HttpUrl
 
-from src.config import CONFIG
-from src.schemas import ChatMessage, ChatSession
-from src.utils import num_tokens_from_string, remove_a_key
+from app.src.config import CONFIG
+from app.src.schemas import ChatMessage, ChatSession
+from app.src.utils import num_tokens_from_string, remove_a_key
 
 tool_prompt = """From the list of tools below:
 - Reply ONLY with the number of the tool appropriate in response \
