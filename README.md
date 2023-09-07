@@ -2,7 +2,7 @@
 
 A basic writing assistant app in pure Python using ChatGPT and Dash.
 
-An async extension of [ChatGPT-dash-app](https://github.com/bendgame/ChatGPT-dash-app/tree/main) to include `simpleaichat` implementation.
+An async extension of [ChatGPT-dash-app](https://github.com/bendgame/ChatGPT-dash-app/tree/main) to include [simpleaichat](https://github.com/minimaxir/simpleaichat) implementation.
 
 ## Features
 
