@@ -2,8 +2,6 @@
 Adapted from:
 https://github.com/minimaxir/simpleaichat/blob/main/simpleaichat/chatgpt.py
 """
-
-
 from collections.abc import Callable
 from typing import Any
 
