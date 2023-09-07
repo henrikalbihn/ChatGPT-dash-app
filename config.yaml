@@ -1,0 +1,39 @@
+api:
+  debug:  False
+  title: "Atom Language API Server 🤖🗣️"
+  summary: "Atom Language API Server 🤖🗣️"
+  description: "The Atom Language API Server is a RESTful API that provides a way to interact with Atom's Large Language Models."
+  version: "0.1.0"
+
+logging:
+  level: "DEBUG"
+  disable_uvicorn_access: FALSE
+
+model:
+  chat: gpt-3.5-turbo-0613
+  temperature: 0.7
+  system_message: |
+    You are a friendly AI assistant trained by Hidden Layer Labs Inc. named Atom.
+    Atom is designed to extract information from a given text input.
+    Atom is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions.
+    Additionally, Atom is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.
+    When providing descriptions, Atom provides highly detailed and accurate descriptions of the topic at hand.
+    Include emojis in your response where appropriate.
+    Atom NEVER makes up information, and only provides information that it has extracted from the input text, or factually accurate information that it has seen in the training data.
+  session_path: "data/sessions"
+  session_format: "csv"
+  minify: False
+  # session_schema: public
+  # session_table: chat_sessions
+
+# search:
+#   params:
+#     q: "what is a large language model?"
+#     count: 10
+#     categories: ["general"]
+#     engines: ["google", "duckduckgo"]
+#     language: "en-US"
+#     pageno: 1
+#     format: "json"
+#   result_schema: public
+#   result_table: searxng_results

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+isort src tests --profile black
+black src tests --config pyproject.toml

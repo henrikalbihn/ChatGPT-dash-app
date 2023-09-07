@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+poetry run ruff . --config pyproject.toml
+

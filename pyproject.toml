@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "atom-dash-demo"
+version = "0.1.0"
+description = "A frontend interface for a ChatGPT writing assistant."
+authors = ["Henrik Albihn <61203850+henrikalbihn@users.noreply.github.com>"]
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.11.4"
+dash = "^2.13.0"
+dash-bootstrap-components = "^1.4.2"
+python-dotenv = "^1.0.0"
+httpx = "^0.24.1"
+pydantic = "^2.3.0"
+orjson = "^3.9.5"
+tiktoken = "^0.4.0"
+rich = "^13.5.2"
+omegaconf = "^2.3.0"
+loguru = "^0.7.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+isort = "^5.12.0"
+ruff = "^0.0.287"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+
+select = ["E", "F", "UP", "N", "C", "B"]
+
+# Assume Python 3.10.
+target-version = "py311"
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.pytest.ini_options]
+addopts = "-v --doctest-modules --doctest-glob=*.md"
+asyncio_mode = "strict"
+env_files = [".env"]
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]
+include = "\\.pyi?$"

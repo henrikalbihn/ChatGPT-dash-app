@@ -1,0 +1,11 @@
+dash
+dash-bootstrap-components
+openai
+python-dotenv
+httpx
+pydantic
+orjson
+tiktoken
+rich
+omegaconf
+loguru
